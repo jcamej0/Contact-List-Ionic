@@ -1,0 +1,12 @@
+a{
+	text-decoration: none;
+	display: block;
+}
+
+.item p{
+	white-space: normal;
+}
+
+span{
+	color: #2143b2;
+}

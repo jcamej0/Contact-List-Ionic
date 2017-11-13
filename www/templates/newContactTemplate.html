@@ -1,0 +1,106 @@
+<ion-modal-view ng-controller="newContact as new">
+        <ion-header-bar class="bar bar-header bar-balanced">
+          <h1 class="title">Nuevo contacto</h1>
+          <button class="button button-clear ion-close" ng-click="modal.hide()"></button>
+        </ion-header-bar>
+        <form name="contactForm" novalidate>
+        <ion-content class="padding">
+        
+          <div class="list">
+            <div class="item item-divider">
+              <i class="icon ion-person-stalker"></i> Información personal
+            </div>
+            <label class="item item-input">
+              <span class="input-label">Nombre: </span>
+              <input ng-model="new.data.name" name="nombre" type="text" ng-minlength="1" ng-maxLength="90" required> 
+              <div class="padding">
+                <p ng-show="contactForm.nombre.$error.required">* Requerido</p>
+                <p ng-show="contactForm.nombre.$error.maxlength">* Maximo 90 letras</p>
+              </div>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Identificación: </span>
+              <input ng-model="new.data.identification" name="identificacion" type="text" ng-minlength="1" ng-maxLength="90" required>
+              <div class="padding">
+                <p ng-show="contactForm.identificacion.$error.required">* Requerido</p>
+                <p ng-show="contactForm.identificacion.$error.maxlength">* Maximo 90 letras</p>
+              </div>
+            </label>
+            <div class="item item-divider">
+              <i class="icon ion-ios-telephone"></i> Contacto
+            </div>
+            <label class="item item-input">
+              <span class="input-label">Tel. Principal: </span>
+              <input ng-model="new.data.phonePrimary" name="telPrincipal" type="tel" ng-maxLength="45" >
+              <div class="padding">
+                <p ng-show="contactForm.telPrincipal.$error.maxlength">* Maximo 45 caracteres</p>
+              </div>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Tel. Secundario:</span>
+              <input ng-model="new.data.phoneSecondary" name="telSecundario" type="tel" ng-maxLength="45" >
+                <div class="padding">
+                <p ng-show="contactForm.telSecundario.$error.maxlength">* Maximo 45 caracteres</p>
+              </div>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Fax:</span>
+              <input ng-model="new.data.fax" type="tel"  name="fax" ng-maxLength="45">
+                <div class="padding">
+                <p ng-show="contactForm.fax.$error.maxlength">* Maximo 45 caracteres</p>
+              </div>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Telefono celular:</span>
+              <input ng-model="new.data.mobile" type="tel" name="celular" ng-maxLength="45">
+              <div class="padding">
+                <p ng-show="contactForm.celular.$error.maxlength">* Maximo 45 caracteres</p>
+              </div>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Email:</span>
+              <input ng-model="new.data.email" type="email" name="email" ng-maxLength="100">
+              <div class="padding">
+                <p ng-show="contactForm.email.$error.maxlength">* Maximo 100 caracteres</p>
+                <p ng-show="contactForm.email.$invalid">* Debe introducir un formato de correo valido.</p>
+              </div>
+            </label>
+            <label class="item item-input">
+              <textarea ng-maxLength="100" placeholder="Observaciones" name="observaciones" ng-model="new.data.observations"></textarea>
+              <div class="padding">
+                <p ng-show="contactForm.observaciones.$error.maxlength">* Maximo 100 caracteres</p>
+              </div>
+            </label>
+            <div class="item item-divider">
+              <i class="icon ion-soup-can-outline"></i> Tipo
+            </div>
+            <ion-list>
+              <ion-checkbox ng-model="new.client" ng-True-Value="'client'" ng-False-Value="'clientFalse'" ng-change="new.typeChangeClient()" >Cliente</ion-checkbox>
+              <ion-checkbox ng-model="new.provider" ng-True-Value="'provider'"  ng-False-Value="'providerFalse'" ng-change="new.typeChangeProvider()" >Proveedor</ion-checkbox>
+            </ion-list>
+            <div class="item item-divider">
+              <i class="icon ion-map"></i> Dirección
+            </div>
+            <label class="item item-input">
+              <span class="input-label">Dirección:</span>
+              <input ng-model="new.data.address.address" name="direccion" type="text" ng-maxLength="100">
+              <div class="padding">
+                <p ng-show="contactForm.direccion.$error.maxlength">* Maximo 100 caracteres</p>
+              </div>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Ciudad:</span>
+              <input ng-model="new.data.address.city" name="ciudad" type="text" ng-maxLength="100">
+              <div class="padding">
+                <p ng-show="contactForm.ciudad.$error.maxlength">* Maximo 100 caracteres</p>
+              </div>
+            </label>
+          </div>
+          </form>
+        </ion-content>
+       <ion-footer-bar  class="bar bar-footer">
+        <div class="bar bar-footer item-input-inset">
+          <button class="button button-full button-positive" ng-disabled="contactForm.$invalid" ng-click="new.create()">Guardar</button>
+        </div>
+      </ion-footer-bar>
+</ion-modal-view>
