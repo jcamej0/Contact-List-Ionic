@@ -27,9 +27,4 @@ angular.module('app.dashboard',[])
     $scope.$broadcast('scroll.refreshComplete');
   })
   };
-
-  $scope.$on('reload',function(event,data){
-    alert('xxx');
-    $scope.doRefresh();
-  });
 })
